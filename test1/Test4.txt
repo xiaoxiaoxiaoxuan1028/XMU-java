@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Test {
+    public static int[] merge(int[] list1, int[] list2) {
+        int[] mergeArr = new int[list1.length + list2.length];
+        int i = 0, j = 0, length = 0;
+
+        while (i < list1.length && j < list2.length) {
+            if (list1[i] < list2[j]) {
+                mergeArr[length++] = list1[i];
+                i++;
+            } else {
+                mergeArr[length++] = list2[j];
+                j++;
+            }
+        }
+        while(i < list1.length) {
+            mergeArr[length++] = list1[i];
+            i++;
+        }
+        while(j < list2.length) {
+            mergeArr[length++] = list2[j];
+            j++;
+        }
+        return mergeArr;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int length1 = 0, length2 = 0;
+        length1 = input.nextInt();
+        int list1[] = new int[length1];
+        for(int i = 0; i < length1; ++i){
+            list1[i] = input.nextInt();
+        }
+        length2 = input.nextInt();
+        int[] list2 = new int[length2];
+        for(int i = 0; i < length2; ++i){
+            list2[i] = input.nextInt();
+        }
+
+        int[] list = new int[length1 + length2];
+        list = merge(list1, list2);
+        for(int i = 0; i < list.length; ++i){
+            System.out.print(list[i] + " ");
+        }
+        System.out.print("\n");
+    }
+}
+

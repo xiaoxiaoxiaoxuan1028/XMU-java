@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Test {
+    public static boolean isPla(int num){
+        String strNum = null;
+        strNum = String.valueOf(num);
+        int lengthN = strNum.length();
+        for(int i = 0; i < lengthN/2; ++i){
+            if(strNum.charAt(i) != strNum.charAt(lengthN-i-1))
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean isPrime(int num){
+        int i = 0;
+        boolean isPri = true;
+        for(i = 2; i*i <= num; ++i){
+            if(num % i == 0){
+                isPri = false;
+                break;
+            }
+        }
+        return isPri;
+    }
+
+    public static void main(String[] args) {
+        int[] plaPrime = new int[101];
+        int count = 0, num = 2;
+
+        while(count < 100){
+            if(isPrime(num) && isPla(num)){
+                plaPrime[count++] = num;
+            }
+            ++num;
+        }
+        for(int i = 0; i < 10; ++i){
+            for(int j = 0; j < 10; ++j)
+                System.out.print(plaPrime[10*i+j]+"\t");
+            System.out.print("\n");
+        }
+
+    }
+}
